@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6EE4E908-564B-45A9-A069-627D96D9379C}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;LINUX;_WINDOWS;BOOST_ALL_NO_LIB;BOOST_MSVC_ENABLE_2014_JUN_CTP;BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES;HAVE_JPEG;HAVE_PNG;HAVE_WEBP;HAVE_TIFF;MAPNIK_USE_PROJ4;BOOST_REGEX_HAS_ICU;GRID_RENDERER;SVG_RENDERER;MAPNIK_THREADSAFE;BIGINT;HAVE_LIBXML2;HAVE_CAIRO;LIBXML_STATIC;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\mapnik-sdk-v3.0.11-x64\include\mapnik\agg;..\mapnik-sdk-v3.0.11-x64\include\libxml2;..\mapnik-sdk-v3.0.11-x64\include\google;..\mapnik-sdk-v3.0.11-x64\include\freetype2;..\mapnik-sdk-v3.0.11-x64\include\cairo;..\mapnik-sdk-v3.0.11-x64\include\agg;..\mapnik-sdk-v3.0.11-x64\include;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>..\mapnik-sdk-v3.0.11-x64\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>qtmaind.lib;mapnik.lib;boost_python-vc140-mt-1_59.lib;cairo-static.lib;cairo.lib;freetype.lib;gdal_i.lib;harfbuzz.lib;icudt.lib;icuin.lib;icuuc.lib;jpeg.lib;libboost_chrono-vc140-mt-1_59.lib;libboost_date_time-vc140-mt-1_59.lib;libboost_filesystem-vc140-mt-1_59.lib;libboost_iostreams-vc140-mt-1_59.lib;libboost_prg_exec_monitor-vc140-mt-1_59.lib;libboost_program_options-vc140-mt-1_59.lib;libboost_regex-vc140-mt-1_59.lib;libboost_system-vc140-mt-1_59.lib;libboost_test_exec_monitor-vc140-mt-1_59.lib;libboost_thread-vc140-mt-1_59.lib;libboost_timer-vc140-mt-1_59.lib;libboost_unit_test_framework-vc140-mt-1_59.lib;libboost_zlib-vc140-mt-1_59.lib;libexpat.lib;libpng16.lib;libpq.lib;libprotobuf-lite.lib;libtiff_i.lib;libwebp_dll.lib;mapnik-json.lib;mapnik-wkt.lib;proj.lib;python27.lib;sqlite3.lib;zlib.lib;zlibwapi.lib;ws2_32.lib;Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <Define>UNICODE;WIN32;WIN64;LINUX;_WINDOWS;BOOST_ALL_NO_LIB;BOOST_MSVC_ENABLE_2014_JUN_CTP;BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES;HAVE_JPEG;HAVE_PNG;HAVE_WEBP;HAVE_TIFF;MAPNIK_USE_PROJ4;BOOST_REGEX_HAS_ICU;GRID_RENDERER;SVG_RENDERER;MAPNIK_THREADSAFE;BIGINT;HAVE_LIBXML2;HAVE_CAIRO;LIBXML_STATIC;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>..\mapnik-sdk-v3.0.11-x64\include\mapnik\agg;..\mapnik-sdk-v3.0.11-x64\include\libxml2;..\mapnik-sdk-v3.0.11-x64\include\google;..\mapnik-sdk-v3.0.11-x64\include\freetype2;..\mapnik-sdk-v3.0.11-x64\include\cairo;..\mapnik-sdk-v3.0.11-x64\include\agg;..\mapnik-sdk-v3.0.11-x64\include;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</IncludePath>
+    </QtMoc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;LINUX;_WINDOWS;BOOST_ALL_NO_LIB;BOOST_MSVC_ENABLE_2014_JUN_CTP;BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES;HAVE_JPEG;HAVE_PNG;HAVE_WEBP;HAVE_TIFF;MAPNIK_USE_PROJ4;BOOST_REGEX_HAS_ICU;GRID_RENDERER;SVG_RENDERER;MAPNIK_THREADSAFE;BIGINT;HAVE_LIBXML2;HAVE_CAIRO;LIBXML_STATIC;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.\mapnik-sdk-v3.0.11-x64\include\libxml2;.\mapnik-sdk-v3.0.11-x64\include\google;..\mapnik-sdk-v3.0.11-x64\include\freetype2;.\mapnik-sdk-v3.0.11-x64\include\cairo;.\mapnik-sdk-v3.0.11-x64\include\mapnik\agg;.\mapnik-sdk-v3.0.11-x64\include;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>.\mapnik-sdk-v3.0.11-x64\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>qtmain.lib;mapnik.lib;boost_python-vc140-mt-1_59.lib;cairo-static.lib;cairo.lib;freetype.lib;gdal_i.lib;harfbuzz.lib;icudt.lib;icuin.lib;icuuc.lib;jpeg.lib;libboost_chrono-vc140-mt-1_59.lib;libboost_date_time-vc140-mt-1_59.lib;libboost_filesystem-vc140-mt-1_59.lib;libboost_iostreams-vc140-mt-1_59.lib;libboost_prg_exec_monitor-vc140-mt-1_59.lib;libboost_program_options-vc140-mt-1_59.lib;libboost_regex-vc140-mt-1_59.lib;libboost_system-vc140-mt-1_59.lib;libboost_test_exec_monitor-vc140-mt-1_59.lib;libboost_thread-vc140-mt-1_59.lib;libboost_timer-vc140-mt-1_59.lib;libboost_unit_test_framework-vc140-mt-1_59.lib;libboost_zlib-vc140-mt-1_59.lib;libexpat.lib;libpng16.lib;libpq.lib;libprotobuf-lite.lib;libtiff_i.lib;libwebp_dll.lib;mapnik-json.lib;mapnik-wkt.lib;proj.lib;python27.lib;sqlite3.lib;zlib.lib;zlibwapi.lib;ws2_32.lib;Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <QtMoc>
+      <Define>UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;LINUX;_WINDOWS;BOOST_ALL_NO_LIB;BOOST_MSVC_ENABLE_2014_JUN_CTP;BOOST_VARIANT_DO_NOT_USE_VARIADIC_TEMPLATES;HAVE_JPEG;HAVE_PNG;HAVE_WEBP;HAVE_TIFF;MAPNIK_USE_PROJ4;BOOST_REGEX_HAS_ICU;GRID_RENDERER;SVG_RENDERER;MAPNIK_THREADSAFE;BIGINT;HAVE_LIBXML2;HAVE_CAIRO;LIBXML_STATIC;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>.\mapnik-sdk-v3.0.11-x64\include\libxml2;.\mapnik-sdk-v3.0.11-x64\include\google;..\mapnik-sdk-v3.0.11-x64\include\freetype2;.\mapnik-sdk-v3.0.11-x64\include\cairo;.\mapnik-sdk-v3.0.11-x64\include\mapnik\agg;.\mapnik-sdk-v3.0.11-x64\include;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</IncludePath>
+    </QtMoc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GeoHash.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeoHash.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2015_64" MocOptions="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
