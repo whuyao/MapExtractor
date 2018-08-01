@@ -32,9 +32,15 @@
     <ClCompile Include="GeoHash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapnikGenerateImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeoHash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapnikGenerateImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

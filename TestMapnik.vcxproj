@@ -96,9 +96,11 @@
   <ItemGroup>
     <ClCompile Include="GeoHash.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapnikGenerateImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeoHash.h" />
+    <ClInclude Include="MapnikGenerateImage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
