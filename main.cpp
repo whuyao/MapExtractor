@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 {
 	const char* sDataSourceDir = "./mapnik/input";
 	const char* sMapXmlDir = "./osm_xml";            //xml文件夹
-	const char* sLocationFile = "./data/lonlat.csv";   //经纬度列表文件
+	const char* sLocationFile = "./data/wuhan.csv";   //经纬度列表文件
 	const char* sSaveImageDir = "./data/osm_per_loc_multi_image_wuhan";  //保存图片结果文件夹
 	int nImgSize = 256;                              //输出图片大小
 	double dSquareDis = 500;                         //输出范围半径大小（m）
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 	// if directory is not exist then create it
 	QDir dir(sSaveImageDir);
 	if (!dir.exists())
-		dir.mkpath(sSaveImageDir);
+		dir.mkpath(QFileInfo(sSaveImageDir).absoluteFilePath());
 
 	//return 1;
 
