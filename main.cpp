@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 	const char* sDataSourceDir = "./mapnik/input";
 	const char* sMapXmlDir = "./osm_xml";            //xml文件夹
 	const char* sLocationFile = "./data/lonlat.csv";   //经纬度列表文件
-	const char* sSaveImageDir = "./data/osm_per_loc_multi_image";  //保存图片结果文件夹
+	const char* sSaveImageDir = "./data/osm_per_loc_multi_image_wuhan";  //保存图片结果文件夹
 	int nImgSize = 256;                              //输出图片大小
 	double dSquareDis = 500;                         //输出范围半径大小（m）
 	int nStartFID = 0;                               //程序从哪个FID的经纬度开始运行
@@ -52,6 +52,12 @@ int main(int argc, char *argv[])
 	int nRandImageNum = 20;                          //每个位置随机生成多少张图
 	int nImageLayer = 8;                             //输出图片的层数，即xml文件的数量
 
+	// if directory is not exist then create it
+	QDir dir(sSaveImageDir);
+	if (!dir.exists())
+		dir.mkpath(sSaveImageDir);
+
+	//return 1;
 
 	// ================= generate images =====================
 	//GeneratePerLocOneImage(sDataSourceDir, sMapXmlDir, sLocationFile, sSaveImageDir, nImgSize, dSquareDis, nStartFID, nHashPrecision, nThreadsNum);
@@ -61,17 +67,17 @@ int main(int argc, char *argv[])
 	// ================= check the output result =====================
 	const char* sMissingLocFile = "./data/osm_iamges_missing.csv";
 	//CheckPerLocOneImageResult(sSaveImageDir, sLocationFile, nImageLayer, nHashPrecision, sMissingLocFile);
-	//CheckPerLocMultiImageResult(sSaveImageDir, sLocationFile, nImageLayer, nHashPrecision, nRandImageNum, sMissingLocFile);
+	CheckPerLocMultiImageResult(sSaveImageDir, sLocationFile, nImageLayer, nHashPrecision, nRandImageNum, sMissingLocFile);
 
 
 	// ================= output the object list of iamges =====================
 	const char* sObjectListFile = "./data/osm_image_test_object_list.txt";
-	//OutputObjectList(sSaveImageDir, sObjectListFile);
+	OutputObjectList(sSaveImageDir, sObjectListFile);
 
 
 	// ================= output the labels of iamges =====================
 	const char* sLabelFile = "./data/osm_iamge_label.csv";
-	//outputLabelFile(sLocationFile, sLabelFile);
+	outputLabelFile(sLocationFile, sLabelFile);
 
 	
 
